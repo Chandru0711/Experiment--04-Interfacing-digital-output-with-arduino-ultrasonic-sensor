@@ -39,6 +39,7 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 ![image](https://user-images.githubusercontent.com/36288975/166430594-5adb4ca9-5a42-4781-a7e6-7236b3766a85.png)
 
+![Screenshot 2024-03-07 062304](https://github.com/Chandru0711/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/144979368/95185d79-43e2-4f3d-b1ae-dae2dcf824ac)
 
 
 ### PROCEDURE:
@@ -54,23 +55,69 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 10.	Plot the graph for the output voltage vs the resistance 
 
 
-### PROGRAM 
+### PROGRAM
+```
+const int trigpin=10;
+const int echopin=9;
+int red=7;
+int green=6;
+long duration;
+int distance;
+
+void setup()
+{
+  pinMode(trigpin, OUTPUT);
+    pinMode(echopin, INPUT);
+    pinMode(red, OUTPUT);
+    pinMode(green, OUTPUT);
+  Serial.begin(9600);
+  
 
 
+
+
+}
+
+void loop()
+{
+  digitalWrite(trigpin, LOW);
+  delay(20); 
+  digitalWrite(trigpin, HIGH);
+  delay(20);
+    digitalWrite(trigpin, LOW);
+duration=pulseIn(echopin,HIGH);
+  distance=duration*0.034/2;
+  Serial.print(distance);
+  Serial.println("cms");
+  if(distance>5)
+  {
+     digitalWrite(red, HIGH);
+  delay(200); 
+   digitalWrite(red, LOW);
+  delay(200);
+  }
+  else
+  {
+     digitalWrite(green, HIGH);
+  delay(200); 
+   digitalWrite(green, LOW);
+  delay(200); 
+  }
+}
+```
 
 
 
 
 ### Distance vs measurement table 
 
+![tab](https://github.com/Chandru0711/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/144979368/66e907a6-77fb-4e2e-82e4-efa4b3260acc)
 			
  
 			
 			
 			
-
-![image](https://user-images.githubusercontent.com/36288975/190135379-52ebacd5-ccd5-460f-a4cd-4d0ad1d9b179.png)
-
+![grap](https://github.com/Chandru0711/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/144979368/88310b05-7d3a-4d86-9665-54cac1d37d4b)
 			
 			
 			
@@ -87,7 +134,7 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 
 ### RESULTS
-
+Thus the program for the distance measurement using Ultrasonic sensor is been implemented successfully.
 
 
  
